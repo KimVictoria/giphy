@@ -2,12 +2,11 @@
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 /* global $ */
-var apikey = "DZv24irnixTUp5tlcJ8hv8eiQHdYBdmM";
+var apikey = "dc6zaTOxFJmzC";
 
 $("#search-button").click(function(){
 
-let searchTerm = $("input").val();
-  
+let searchTerm = $("input").val();  
  
   var request_url = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&rating=pg&api_key=" + apikey 
     
@@ -18,11 +17,14 @@ let searchTerm = $("input").val();
     .then(function(data) {
       var pic_url = data.data[Math.floor(Math.random() * data.data.length)].images.original.url;
       console.log(data)
-        $('.picture').html('<marquee><img src=' + pic_url + '></marquee>');
+        $('.picture').html('<img src=' + pic_url + '>');
     })
+
+    $(".myModal").modal("show");
+
 });
 
-var trending = "https://api.giphy.com/v1/gifs/trending?rating=pg&api_key=" + apikey
+var trending = "https://api.giphy.com/v1/gifs/trending?api_key=" + apikey
 console.log("hello")
 fetch(trending)
     .then(function(response) {
@@ -33,6 +35,9 @@ fetch(trending)
     console.log(data)
     $('.trendingpicture').html('<marquee><img src=' + pic_url + '></marquee>');
     })
+
+
+
     
 
 
